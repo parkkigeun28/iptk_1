@@ -79,7 +79,7 @@ function ui(){
   <div class="card">
     <h1><b>HC</b> Smart <i>Mold</i></h1><div class="sub">MES 로그인</div>
     <label>이름 (또는 아이디)</label><input id="lgEmail" type="text" autocomplete="username" placeholder="예: 김민수">
-    <label>비밀번호</label><input id="lgPw" type="password" autocomplete="current-password" placeholder="6자리 이상">
+    <label>비밀번호</label><input id="lgPw" type="password" autocomplete="current-password" placeholder="일반: 숫자 4자리 · 관리자: 6자 이상">
     <button id="lgBtn">로그인</button><div class="err" id="lgErr"></div>
     <div class="hintbox">이름 또는 아이디와 비밀번호로 로그인합니다. 계정이 없으면 관리자에게 문의하세요.</div>
   </div>`;
@@ -114,14 +114,22 @@ function applyMenuPermissions(){
     });
   }catch(e){}
 }
+/* v345: 일반계정은 숫자 4자리 비밀번호 (Supabase 기본 변경 API 는 6자 미만을 거부하므로 rpc/set_my_pin 사용).
+   관리자/마스터는 지금처럼 6자 이상. */
 async function changePassword(){
-  const p1=prompt('새 비밀번호를 입력하세요. (6자 이상)');
+  const pin=AUTH.role!=='master'&&AUTH.role!=='admin';
+  const p1=prompt(pin?'새 비밀번호를 입력하세요. (숫자 4자리)':'새 비밀번호를 입력하세요. (6자 이상)');
   if(p1===null)return;
-  if(!p1||p1.length<6)return alert('비밀번호는 6자 이상이어야 합니다.');
+  if(pin&&!/^[0-9]{4}$/.test(p1))return alert('비밀번호는 숫자 4자리여야 합니다.');
+  if(!pin&&(!p1||p1.length<6))return alert('비밀번호는 6자 이상이어야 합니다.');
   const p2=prompt('새 비밀번호를 한 번 더 입력하세요.');
   if(p2===null)return;
   if(p1!==p2)return alert('두 입력이 일치하지 않습니다.');
   try{
+    if(pin){
+      await api('/rest/v1/rpc/set_my_pin',{method:'POST',body:JSON.stringify({p_pin:p1})},true);
+      return alert('비밀번호가 변경되었습니다. 다음 로그인부터 새 비밀번호를 사용하세요.');
+    }
     await api('/auth/v1/user',{method:'PUT',body:JSON.stringify({password:p1})},true);
     try{await api('/rest/v1/rpc/invalidate_temp_password',{method:'POST',body:'{}'},true)}catch(e){}
     alert('비밀번호가 변경되었습니다. 다음 로그인부터 새 비밀번호를 사용하세요.');

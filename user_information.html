@@ -322,7 +322,8 @@ async function registerUser(){
     return message.textContent='관리자만 사용자를 등록할 수 있습니다.';
   const name=prompt('사용자 이름 (로그인 시 사용)'); if(!name)return;
   const uid=prompt('아이디 (영문/숫자, 동명이인 구분용)'); if(!uid)return;
-  const pw=prompt('초기 비밀번호 (6자 이상)'); if(!pw)return;
+  const pw=prompt('초기 비밀번호 (숫자 4자리)'); if(!pw)return;
+  if(!/^[0-9]{4}$/.test(pw))return message.textContent='일반계정 초기 비밀번호는 숫자 4자리입니다.';
   const dept=prompt('부서명 (선택, 비워도 됨)')||'';
   try{
     const email=await MESDB.rest('rpc/create_mes_user',{method:'POST',
@@ -338,7 +339,10 @@ async function resetPassword(){
   if(!u||!u.user_id)return message.textContent='아이디가 있는 사용자를 먼저 선택하세요.';
   if(u.role==='master'&&!isMaster())
     return message.textContent='마스터 계정의 비밀번호는 마스터만 변경할 수 있습니다.';
-  const pw=prompt(`${u.name}(${u.user_id})의 새 비밀번호 (6자 이상)`); if(!pw)return;
+  const adm=u.role==='master'||u.role==='admin';   /* v345: 일반계정 숫자 4자리, 관리자/마스터 6자 이상 */
+  const pw=prompt(`${u.name}(${u.user_id})의 새 비밀번호 (${adm?'6자 이상':'숫자 4자리'})`); if(!pw)return;
+  if(adm&&pw.length<6)return message.textContent='관리자/마스터 비밀번호는 6자 이상이어야 합니다.';
+  if(!adm&&!/^[0-9]{4}$/.test(pw))return message.textContent='일반계정 비밀번호는 숫자 4자리입니다.';
   try{
     await MESDB.rest('rpc/reset_user_password',{method:'POST',body:JSON.stringify({p_user_id:u.user_id,p_password:pw})});
     message.textContent=`${u.name}의 비밀번호를 재설정했습니다.`;toast('비밀번호가 재설정되었습니다');
