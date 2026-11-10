@@ -1,16 +1,17 @@
 ﻿IPTK MES 바로가기 설치 방법
 ==============================
-접속 주소: https://iptk38-del.github.io/iptk_1/
+접속 주소: https://hcsmart.github.io/iptk_1/
 
-[Windows] 자동 설치 (권장)
-1. 이 압축파일을 마우스 오른쪽 클릭 → "압축 풀기" (꼭 압축을 푼 뒤 실행)
-2. install_shortcut.bat 더블클릭
+[Windows] 설치
+1. 압축파일을 마우스 오른쪽 클릭 → "압축 풀기"
+2. IPTK_MES_Setup.exe 더블클릭
    - "Windows의 PC 보호" 창이 뜨면 → "추가 정보" → "실행"
-3. 바탕화면에 IPTK 아이콘의 "IPTK MES" 바로가기가 생깁니다.
+   - 관리자 권한 필요 없음
+3. 설치 완료 → 바탕화면과 시작 메뉴에 "IPTK MES" 아이콘이 생깁니다.
 
-[Windows] 수동 설치
-1. iptk_1.ico 를 C:\Users\Public\IPTK 폴더에 복사 (폴더가 없으면 만들기)
-2. "IPTK MES.url" 을 바탕화면에 복사
+[Windows] 제거
+설정 → 앱 → 설치된 앱 → "IPTK MES 바로가기" → 제거
+(또는 시작 메뉴 → IPTK MES → IPTK MES 제거)
 
 [Mac]
 1. "IPTK MES.webloc" 을 바탕화면 또는 Dock에 놓기
