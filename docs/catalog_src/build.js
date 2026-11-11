@@ -89,17 +89,20 @@ h2{font-size:15pt;color:var(--navy);font-weight:800;margin:6.5mm 0 1.5mm}
 .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
 .f{display:flex;gap:3mm;align-items:center;padding:3mm 0}
 .f b{display:block;font-size:10.5pt;color:var(--navy)}.f span{font-size:8.8pt;color:var(--muted)}
-.band{position:absolute;left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:7mm 16mm;display:flex;align-items:center;gap:8mm}
+.band{position:absolute;left:0;right:0;bottom:12mm;background:var(--navy);color:#fff;padding:7mm 16mm;display:flex;align-items:center;gap:8mm}
 .band .t{font-size:13pt;font-weight:800;flex:none}
 .band ol{list-style:none;display:flex;gap:3mm;flex:1}
 .band li{flex:1;font-size:9pt;color:#DCE6F5;line-height:1.4;border-left:2px solid var(--sky);padding-left:2.5mm}
 .band li b{display:block;color:var(--sky);font-size:9.5pt}
+.brand{font-size:15pt;font-weight:800;color:#fff;margin-bottom:4mm;letter-spacing:.3px}.brand i{font-style:normal;color:var(--sky);font-weight:700}
+.contact{position:absolute;left:0;right:0;bottom:0;background:#0E1830;color:#C9D6EA;padding:3.5mm 16mm;display:flex;justify-content:space-between;align-items:center;font-size:9.5pt}
+.contact b{color:#fff;font-size:11pt}.contact .tel{color:var(--sky);font-weight:800;font-size:12pt}
 .pno{position:absolute;right:16mm;top:8mm;font-size:8pt;color:#9FB3CC}
 </style></head><body>
 
 <section class="page">
   <div class="hero"><span class="pno">1 / 2</span>
-    <span class="tag">금형 제조 기업을 위한 MES</span>
+    <div class="brand">HC Smart <i>Mold</i></div><span class="tag">금형 제조 기업을 위한 MES</span>
     <h1>금형 한 벌의 수주부터 납품까지,<br><em>기록은 한 번, 원가와 진척은 자동으로</em></h1>
     <p>엑셀과 메신저, 수기 장부에 흩어진 금형 제작 기록을 하나의 관리번호로 묶습니다. 현장이 입력한 기록에서 금형별 실제 원가와 진행 상황이 자동으로 나옵니다.</p>
   </div>
@@ -140,6 +143,7 @@ h2{font-size:15pt;color:var(--navy);font-weight:800;margin:6.5mm 0 1.5mm}
     <li><b>3. 역할별 교육</b>본인 담당 화면 3~5개</li>
     <li><b>4. 월 마감 적용</b>원가·정산 보고서 활용</li>
   </ol></div>
+  <div class="contact"><span><b>HC Smart Mold</b> &nbsp;금형 제조 MES</span><span>도입 문의 &nbsp;<span class="tel">010-5504-6417</span></span></div>
 </section>
 </body></html>`;
 
