@@ -102,7 +102,7 @@ h2{font-size:15pt;color:var(--navy);font-weight:800;margin:6.5mm 0 1.5mm}
 
 <section class="page">
   <div class="hero"><span class="pno">1 / 2</span>
-    <div class="brand">HC Smart <i>Mold</i></div><span class="tag">금형 제조 기업을 위한 MES</span>
+    <div class="brand">HC Smart <i>Mold</i></div><span class="tag">HC Smart · 금형 제조 기업을 위한 MES</span>
     <h1>금형 한 벌의 수주부터 납품까지,<br><em>기록은 한 번, 원가와 진척은 자동으로</em></h1>
     <p>엑셀과 메신저, 수기 장부에 흩어진 금형 제작 기록을 하나의 관리번호로 묶습니다. 현장이 입력한 기록에서 금형별 실제 원가와 진행 상황이 자동으로 나옵니다.</p>
   </div>
@@ -143,7 +143,7 @@ h2{font-size:15pt;color:var(--navy);font-weight:800;margin:6.5mm 0 1.5mm}
     <li><b>3. 역할별 교육</b>본인 담당 화면 3~5개</li>
     <li><b>4. 월 마감 적용</b>원가·정산 보고서 활용</li>
   </ol></div>
-  <div class="contact"><span><b>HC Smart Mold</b> &nbsp;금형 제조 MES</span><span>도입 문의 &nbsp;<span class="tel">010-5504-6417</span></span></div>
+  <div class="contact"><span><b>HC Smart</b> &nbsp;·&nbsp; HC Smart Mold 금형 제조 MES</span><span>도입 문의 &nbsp;<span class="tel">010-5504-6417</span></span></div>
 </section>
 </body></html>`;
 
