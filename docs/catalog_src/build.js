@@ -50,13 +50,13 @@ const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>
 body{color:var(--ink)}
 .page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:#fff}
 .page:last-child{page-break-after:auto}
-.hero{background:var(--navy);color:#fff;padding:13mm 16mm 9mm}
+.hero{background:var(--navy);color:#fff;padding:11mm 16mm 7mm}
 .tag{display:inline-block;font-size:10pt;color:var(--sky);border:1px solid rgba(0,174,239,.5);border-radius:20px;padding:3px 12px;margin-bottom:5mm;letter-spacing:.5px}
-.hero h1{font-size:25pt;line-height:1.3;font-weight:800}
+.hero h1{font-size:23pt;line-height:1.3;font-weight:800}
 .hero h1 em{font-style:normal;color:var(--sky)}
-.hero p{font-size:11.5pt;color:#C9D6EA;margin-top:5mm;line-height:1.6;max-width:160mm}
+.hero p{font-size:11.5pt;color:#C9D6EA;margin-top:3.5mm;line-height:1.55;max-width:170mm}
 .sec{padding:0 16mm}
-h2{font-size:15pt;color:var(--navy);font-weight:800;margin:6.5mm 0 1.5mm}
+h2{font-size:15pt;color:var(--navy);font-weight:800;margin:5.5mm 0 1.5mm}
 .lead{font-size:10pt;color:var(--muted);margin-bottom:4mm}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
@@ -71,10 +71,22 @@ h2{font-size:15pt;color:var(--navy);font-weight:800;margin:6.5mm 0 1.5mm}
 .step b{display:block;font-size:12pt;color:var(--blue)}.step.last b{color:var(--sky)}
 .step span{font-size:9pt;color:var(--ink);line-height:1.45}.step.last span{color:#DCE6F5}
 .arrow{align-self:center;color:var(--sky);font-size:16pt;font-weight:800}
-.key{margin-top:4mm;background:#FFF4E0;border-radius:3mm;padding:3.5mm 5mm;font-size:10pt;line-height:1.55}
+.key{margin-top:3mm;background:#FFF4E0;border-radius:3mm;padding:3.5mm 5mm;font-size:10pt;line-height:1.55}
 .key b{color:#B45309}
 .shot{margin-top:4mm}
 .shot img{width:100%;border:1px solid var(--line);border-radius:2mm}
+.ev{border:1px solid var(--line);border-radius:2mm;overflow:hidden}
+.evh{background:#E6EEF8;padding:2.2mm 3.5mm;display:flex;gap:4mm;align-items:center;font-size:8.5pt;color:var(--muted)}
+.evh b{color:var(--navy);font-size:10pt}.evh .lg{margin-left:auto;display:flex;align-items:center;gap:1.5mm}
+.evh i{display:inline-block;width:3mm;height:3mm;border-radius:.6mm;margin-left:2mm}.evh i.l{background:#FDE68A}.evh i.e{background:#BBF7D0}
+.ev table{width:100%;border-collapse:collapse;font-size:9pt}
+.ev th,.ev td{border-top:1px solid var(--line);border-left:1px solid var(--line);padding:1.3mm 1.2mm;text-align:center}
+.ev tr>*:first-child{border-left:none}
+.ev tr:first-child th{background:#F3F6FB;color:var(--navy);font-weight:700}
+.ev th{background:#F7F9FC;color:var(--ink);font-weight:700;width:17mm}
+.ev tr.tg td,.ev tr.tg th{color:var(--blue);font-weight:700}
+.ev td.late{background:#FDE68A;font-weight:700}.ev td.early{background:#BBF7D0;font-weight:700}
+.ev td.o{color:var(--muted)}
 .shot figcaption{font-size:8.5pt;color:var(--muted);margin-top:1.5mm}
 .id{display:flex;gap:6mm;align-items:center;margin-top:3mm}
 .id>div{flex:none}.id .no{white-space:nowrap;margin-bottom:2mm;font-size:20pt;font-weight:800;color:var(--blue);letter-spacing:.5px}
@@ -118,7 +130,7 @@ h2{font-size:15pt;color:var(--navy);font-weight:800;margin:6.5mm 0 1.5mm}
     </div>
     <div class="flow" style="margin-top:4mm">${steps.map(([i, h, p], k) => `${k ? '<div class="arrow">→</div>' : ''}<div class="step${k === 2 ? ' last' : ''}"><div class="ic${k === 2 ? ' sky' : ''}">${I(i)}</div><div><b>${h}</b><span>${p}</span></div></div>`).join('')}</div>
     <div class="key"><b>핵심 원칙</b> — 입고확정된 금액과 등록된 작업시간만 원가에 들어갑니다. 현장이 기록을 남기면, 집계는 시스템이 합니다.</div>
-    <figure class="shot"><img src="file://${__dirname}/event.jpg"><figcaption>▲ 제작계획 화면 — 접수·설계·가공·조립·초품·완료 6단계를 요구/목표/가능 일정으로 관리하고, 목표보다 늦으면 노랗게 표시합니다.</figcaption></figure>
+    <figure class="shot"><div class="ev"><div class="evh"><b>금형제작 일정</b><span>요구 = 고객 요구일 · 목표 = 우리 계획 · 가능 = 현재 예상</span><span class="lg"><i class="l"></i>목표보다 늦음 <i class="e"></i>앞당김</span></div><table><tr><th>구분</th><th>접수</th><th>설계</th><th>가공</th><th>조립</th><th>초품</th><th>완료</th></tr><tr class=""><th>요구일정</th><td>11/03 (화)</td><td>11/20 (금)</td><td>12/08 (화)</td><td>12/18 (금)</td><td>12/04 (금)</td><td>12/24 (목)</td></tr><tr class="tg"><th>목표일정</th><td>11/08 (일)</td><td>11/21 (토)</td><td>12/09 (수)</td><td>12/19 (토)</td><td>12/06 (일)</td><td>12/26 (토)</td></tr><tr class=""><th>가능일정</th><td class="">11/08 (일)</td><td class="late">11/24 (화)</td><td class="late">12/12 (토)</td><td class="">12/19 (토)</td><td class="early">12/04 (금)</td><td class="">12/26 (토)</td></tr></table></div><figcaption>▲ 제작계획 화면 — 접수·설계·가공·조립·초품·완료 6단계를 요구/목표/가능 일정으로 관리하고, 목표보다 늦으면 노랗게 표시합니다.</figcaption></figure>
   </div>
 </section>
 
